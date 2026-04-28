@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+guess-song:
+  music-folder: ./music
+  format: flac
+  audio-prefix: /audio
+  rescan-on-startup: true
+  default-clip-seconds: 10
+  scan-log-enabled: true
