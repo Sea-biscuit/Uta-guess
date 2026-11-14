@@ -14,7 +14,8 @@
 
 页面和 Vue 运行库随 Go 程序提供，可离线启动。
 
-在 `standalone` 目录运行 `go run .`，然后打开 http://127.0.0.1:8080。整合版从**启动时的工作目录**读取 `.\music`。在 `standalone` 内启动时，将曲库放在 `standalone/music`。
+在 `standalone` 目录运行 `go run .`，然后打开 http://127.0.0.1:8080
+整合版从**启动时的工作目录**读取 `.\music`。在 `standalone` 内启动时，将曲库放在 `standalone/music`。
 
 在 `standalone` 运行 `go build -o uta-guess.exe .` 可打包成单个可执行文件，页面和 Vue 已嵌入。切换到包含 `music` 的目录后再运行该程序。
 
