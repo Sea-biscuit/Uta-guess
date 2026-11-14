@@ -244,7 +244,7 @@ function changeSequenceMode(next) {
 
 <template>
   <main class="page">
-    <h1>晚会猜歌控制台</h1>
+    <h1>猜歌</h1>
     <section class="panel">
       <div class="headline">
         <div>第 {{ order.length ? currentIndex + 1 : 0 }} / {{ order.length }} 题</div>

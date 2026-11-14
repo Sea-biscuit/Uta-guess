@@ -2,4 +2,4 @@ split/backend/music/*
 split/frontend/node_modules/
 split/frontend/dist/
 standalone/music/*
-standalone/backend.exe
+standalone/*.exe
