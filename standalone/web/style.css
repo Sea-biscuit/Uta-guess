@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 36px;
+}
+
+.panel {
+  border: 1px solid #333;
+  background: #1f1f1f;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.headline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.status {
+  color: #9ad1ff;
+}
+
+.answer {
+  min-height: 110px;
+  border: 1px dashed #555;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.cover-box {
+  margin-bottom: 12px;
+}
+
+.cover-image {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #666;
+  background: #000;
+}
+
+.cover-placeholder {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid #666;
+  color: #999;
+  background: #262626;
+  font-size: 24px;
+}
+
+.answer-visible .title {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.answer-visible .artist {
+  margin-top: 6px;
+  font-size: 26px;
+  color: #ffd77a;
+}
+
+.answer-hidden {
+  font-size: 32px;
+  color: #bbb;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+button {
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  background: #2f79ff;
+  color: #fff;
+}
+
+button:hover {
+  filter: brightness(1.07);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button.active {
+  background: #17a467;
+}
+
+.question-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.question-list button {
+  min-width: 58px;
+  background: #444;
+}
+
+.question-list button.current {
+  background: #e06d00;
+}
+
+.draw-controls {
+  align-items: center;
+}
+
+.draw-controls input {
+  width: 5rem;
+  padding: 6px 8px;
+  font: inherit;
+}
+
+[v-cloak] {
+  display: none;
+}

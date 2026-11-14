@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>晚会猜歌控制台</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <main class="page">
+        <h1>晚会猜歌控制台</h1>
+        <section class="panel">
+          <div class="headline">
+            <div>第 {{ order.length ? currentIndex + 1 : 0 }} / {{ order.length }} 题</div>
+            <div class="status">状态：{{ statusText }}</div>
+          </div>
+
+          <form class="controls draw-controls" @submit.prevent="drawSongs">
+            <label for="draw-count">抽取曲目数</label>
+            <input id="draw-count" v-model.number="drawCount" type="number" min="1" :max="songCount" step="1" :disabled="!songCount" required />
+            <span>曲库共 {{ songCount }} 首</span>
+            <button type="submit" :disabled="!canDraw">随机抽取</button>
+          </form>
+
+          <div class="answer">
+            <template v-if="currentSong">
+              <div class="cover-box">
+                <img v-if="isAnswerVisible && currentCoverUrl" :src="currentCoverUrl" alt="专辑封面" class="cover-image" />
+                <div v-else class="cover-placeholder">{{ isAnswerVisible ? "无封面" : "封面未揭晓" }}</div>
+              </div>
+              <div v-if="isAnswerVisible" class="answer-visible">
+                <div class="title">{{ currentSong.title }}</div>
+                <div class="artist">{{ currentSong.artist }}</div>
+              </div>
+              <div v-else class="answer-hidden">答案未揭晓</div>
+            </template>
+          </div>
+
+          <div class="controls">
+            <button :disabled="!canPlay" @click="playIntro">播放开头</button>
+            <button :disabled="!canPlay" @click="playRandom">播放随机</button>
+            <button :disabled="!canPlay || !isPlaying" @click="stopWithFadeOut">停止</button>
+            <button :disabled="!canPlay" @click="replayCurrentSegment">重播片段</button>
+            <button :disabled="!canPlay" @click="rerollRandom">重新随机并播放</button>
+            <button :disabled="!canPlay" @click="toggleAnswer">
+              {{ isAnswerVisible ? "隐藏答案" : "揭晓答案" }}
+            </button>
+          </div>
+
+          <div class="controls">
+            <button :disabled="!canPlay" @click="goPrev">上一题</button>
+            <button :disabled="!canPlay" @click="goNext">下一题</button>
+          </div>
+
+          <div class="controls">
+            <button :class="{ active: sequenceMode === 'ordered' }" @click="changeSequenceMode('ordered')">
+              顺序模式
+            </button>
+            <button :class="{ active: sequenceMode === 'shuffled' }" @click="changeSequenceMode('shuffled')">
+              乱序模式
+            </button>
+          </div>
+
+          <div class="question-list">
+            <button
+              v-for="(songId, idx) in order"
+              :key="songId"
+              :class="{ current: idx === currentIndex }"
+              @click="jumpTo(idx)"
+            >
+              {{ idx + 1 }}
+            </button>
+          </div>
+
+          <audio ref="audioRef" preload="none"></audio>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
